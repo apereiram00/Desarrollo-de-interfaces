@@ -1,9 +1,41 @@
-<div class="homePage">
-    <h1>Curso</h1>
-    <div class="info">
-        <p>Aqui se mostraria la información de los cursos</p>
-        <ul>
-            <li><a routerLink="">Inicio</a></li>
-        </ul>
-    </div>
+<div class="coursePage">
+  <h1>Cursos</h1>
+  <div class="info">
+    <ul>
+      <li><a class="cursoColor" [routerLink]="['/courses', 1]">Curso 1</a></li>
+      <li><a class="cursoColor" [routerLink]="['/courses', 2]">Curso 2</a></li>
+      <li><a class="cursoColor" [routerLink]="['/courses', 3]">Curso 3</a></li>
+      <li><a routerLink="">Inicio</a></li>
+    </ul>
+  </div>
+  <div *ngIf="estaEnCurso1()" class="bgCurso">
+    <p>Descripcion del curso ID: {{ courseId }}</p>
+    <p class="descripcionCurso">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde id
+      doloremque ducimus incidunt laborum debitis recusandae libero porro
+      accusantium omnis et exercitationem, eum accusamus repellendus dicta,
+      tempore, obcaecati commodi! Excepturi.
+    </p>
+    <h2><a [routerLink]="['/enroll', 1]">¡¡INSCRIBETE!!</a></h2>
+  </div>
+  <div *ngIf="estaEnCurso2()" class="bgCurso">
+    <p>Descripcion del curso ID: {{ courseId }}</p>
+    <p class="descripcionCurso">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde id
+      doloremque ducimus incidunt laborum debitis recusandae libero porro
+      accusantium omnis et exercitationem, eum accusamus repellendus dicta,
+      tempore, obcaecati commodi! Excepturi.
+    </p>
+    <h2><a [routerLink]="['/enroll', 2]">¡¡INSCRIBETE!!</a></h2>
+  </div>
+  <div *ngIf="estaEnCurso3()" class="bgCurso">
+    <p>Descripcion del curso ID: {{ courseId }}</p>
+    <p class="descripcionCurso">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde id
+      doloremque ducimus incidunt laborum debitis recusandae libero porro
+      accusantium omnis et exercitationem, eum accusamus repellendus dicta,
+      tempore, obcaecati commodi! Excepturi.
+    </p>
+    <h2><a [routerLink]="['/enroll', 3]">¡¡INSCRIBETE!!</a></h2>
+  </div>
 </div>
