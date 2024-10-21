@@ -1,0 +1,7 @@
+<app-user-form-component (formSubmit)="onFormSubmitted($event)"></app-user-form-component>
+<div class="datosUsuario" *ngIf="datosFormulario.length > 0">
+    <div *ngFor="let usuario of datosFormulario">
+        <p><strong>Nombre:</strong> {{ usuario.name }}</p>
+        <p><strong>Correo electrónico:</strong> {{ usuario.email }}</p>
+    </div>
+</div>
