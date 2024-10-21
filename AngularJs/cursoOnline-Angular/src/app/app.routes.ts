@@ -8,6 +8,7 @@ import { Error404Component } from './components/pages/error404/error404.componen
 export const routes: Routes = [
     {path: '', component: HomePage },
     {path: 'courses', component: CoursePage},
+    {path: 'courses/:id', component: CoursePage},
     {path: 'profile', component: ProfilePage},
     {path: 'enroll/:id', component: FormPage},
     {path: '**', component: Error404Component}

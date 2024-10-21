@@ -1,8 +1,53 @@
-<div class="homePage">
-    <h1>Home</h1>
+<div class="formPage">
+    <h1>Formulario de Inscripción</h1>
+    <div class="info">
+      <form>
+        <div *ngIf="estaForm1()" class="bgForm">
+          <p>Formulario del <strong>curso</strong> ID: {{ formId }}</p>
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" placeholder="Tu nombre" required><br><br>
+          
+          <label for="email">Correo Electrónico:</label>
+          <input type="email" id="email" placeholder="Tu correo" required><br><br>
+          
+          <label for="comments">Comentarios:</label>
+          <textarea id="comments" placeholder="Comentarios opcionales"></textarea><br><br>
+          
+          <button type="submit">Enviar</button>
+        </div>
+  
+        <div *ngIf="estaForm2()" class="bgForm">
+          <p>Formulario del <strong>curso</strong> ID: {{ formId }}</p>
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" placeholder="Tu nombre" required><br><br>
+          
+          <label for="email">Correo Electrónico:</label>
+          <input type="email" id="email" placeholder="Tu correo" required><br><br>
+          
+          <label for="comments">Comentarios:</label>
+          <textarea id="comments" placeholder="Comentarios opcionales"></textarea><br><br>
+          
+          <button type="submit">Enviar</button>
+        </div>
+  
+        <div *ngIf="estaForm3()" class="bgForm">
+          <p>Formulario del <strong>curso</strong> ID: {{ formId }}</p>
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" placeholder="Tu nombre" required><br><br>
+          
+          <label for="email">Correo Electrónico:</label>
+          <input type="email" id="email" placeholder="Tu correo" required><br><br>
+          
+          <label for="comments">Comentarios:</label>
+          <textarea id="comments" placeholder="Comentarios opcionales"></textarea><br><br>
+          
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
+  
     <ul>
-        <li><a routerLink="/courses">Cursos</a></li>
-        <li><a routerLink="/profile">Perfil usuario</a></li>
-        <li><a routerLink="/enroll:id">Formulario</a></li>
+      <li><a routerLink="">Inicio</a></li>
     </ul>
-</div>
+  </div>
+  
