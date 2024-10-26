@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SimpsonsService } from '../../services/simpsons.service';
+import { FamilyguyService } from '../../services/familyguy.service';
 
 @Component({
-  selector: 'app-simpsons-characters',
+  selector: 'app-familyguy-characters',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './simpsons.component.html',
-  styleUrls: ['./simpsons.component.css'],
+  templateUrl: './familyguy.component.html',
+  styleUrls: ['./familyguy.component.css'],
 })
-export class SimpsonsComponent implements OnInit {
+export class FamilyguyComponent implements OnInit {
   characters: any[] = [];
 
-  constructor(private familyGuyService: SimpsonsService) {}
+  constructor(private familyGuyService: FamilyguyService) {}
 
   ngOnInit(): void {
     this.buscarPersonajes();

@@ -1,7 +1,0 @@
-<h1>Personajes de Family Guy</h1>
-<ul>
-  <li *ngFor="let character of characters">
-    <h2>{{ character.person.name }} ({{ character.character.name }})</h2>
-    <img [src]="character.character.image?.medium" alt="{{ character.character.name }}" />
-  </li>
-</ul>

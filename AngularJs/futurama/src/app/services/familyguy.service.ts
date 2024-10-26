@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class SimpsonsService {
+export class FamilyguyService {
   private apiUrl = 'https://api.tvmaze.com/shows/84/cast';
 
   constructor(private http: HttpClient) {}
