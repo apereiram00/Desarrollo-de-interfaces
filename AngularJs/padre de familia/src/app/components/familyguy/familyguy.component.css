@@ -31,7 +31,7 @@ h2 {
 
 /* Diseño de las tarjetas de personaje */
 .character-card {
-    background: linear-gradient(135deg, #ffcc00, #ff5722);
+    background: linear-gradient(135deg, #00ffd5, #000000);
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     width: 250px;
