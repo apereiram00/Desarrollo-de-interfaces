@@ -1,0 +1,204 @@
+/* Contenedor principal */
+.park-status-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1000px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos */
+  background-color: #ffffff; /* Fondo general más claro */
+}
+
+/* Título del parque */
+.park-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Contenedor de las estadísticas del parque */
+.park-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 15px;
+  background-color: #e9f7fc; /* Fondo azul claro */
+  padding: 25px; /* Aumentamos el padding */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Decoración en las estadísticas */
+.park-info p {
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.park-info p strong {
+  font-size: 18px;
+  color: #007bff;
+}
+
+/* Secciones para dinosaurios y recintos */
+.section {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.park-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.park-list-item {
+  background-color: rgba(86, 235, 81, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 220px;
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.park-list-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dinosaur-image, .enclosure-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.action-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.action-btn:hover {
+  background-color: #0056b3;
+}
+
+.coin-generation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  text-align: center;
+  padding: 15px;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: auto;
+}
+
+.coin-generation h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.earn-coin-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.earn-coin-btn:hover {
+  background-color: #218838;
+}
+
+.unlock-btn {
+  background-color: #ffc107;
+  color: white;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.unlock-btn:hover {
+  background-color: #e0a800;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+  width: auto;
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+.coin-generation, .unlock-btn {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.unlock-btn,
+.earn-coin-btn {
+  width: 150px;
+  margin: 10px;
+}
