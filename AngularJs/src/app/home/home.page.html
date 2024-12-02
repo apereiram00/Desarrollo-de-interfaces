@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seguimiento de Series</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button expand="block" (click)="abrirModal()">Añadir Película</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let pelicula of peliculas">
+      <ion-card>
+        <img [src]="pelicula.imagen" alt="Imagen de la película" />
+        <ion-card-header>
+          <ion-card-title [ngClass]="{ 'tachado': pelicula.vista }">
+            {{ pelicula.titulo }}
+          </ion-card-title>
+          <ion-card-subtitle>
+            {{ pelicula.descripcion }}
+          </ion-card-subtitle>
+        </ion-card-header>
+          <ion-checkbox [checked]="pelicula.vista" (ionChange)="marcarComoVista(pelicula)"></ion-checkbox>
+          <ion-button (click)="eliminarPelicula(pelicula)">Eliminar</ion-button>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

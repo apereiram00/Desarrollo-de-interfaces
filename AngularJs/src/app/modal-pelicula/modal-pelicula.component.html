@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Añadir Película</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="peliculaForm"> 
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input formControlName="titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input formControlName="descripcion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Imagen (URL)</ion-label>
+      <ion-input formControlName="imagen"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" color="primary" (click)="guardarPelicula()">Guardar</ion-button>
+  </form>
+</ion-content>
