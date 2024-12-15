@@ -24,4 +24,11 @@ export class ParkService {
   getAllEnclosures(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/data/enclosures`);
   }
+
+  updateParkStatus(updatedPark: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<any>(`${this.apiUrl}/park/update`, updatedPark, { headers });
+  }
+  
 }

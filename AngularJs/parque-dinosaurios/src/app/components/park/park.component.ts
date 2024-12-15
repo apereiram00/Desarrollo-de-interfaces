@@ -36,7 +36,6 @@ export class ParkComponent implements OnInit {
     this.visitors += randomIncrement;
   }
 
-
   unlockRandomDinosaur() {
     this.dinosaurService.getDinosaurs().subscribe(dinosaurs => {
       if (dinosaurs.length === 0) {
@@ -59,6 +58,7 @@ export class ParkComponent implements OnInit {
 
         this.updateCoins();
         this.syncDinosaurs();
+        this.updateParkStatus(); 
       } else {
         alert('No tienes suficientes billetes para desbloquear este dinosaurio.');
       }
@@ -87,6 +87,7 @@ export class ParkComponent implements OnInit {
 
         this.updateCoins();
         this.syncEnclosures();
+        this.updateParkStatus(); 
       } else {
         alert('No tienes suficientes billetes para desbloquear este recinto.');
       }
@@ -99,10 +100,10 @@ export class ParkComponent implements OnInit {
     if (this.parkStatus.coins >= upgradeCost) {
       this.parkStatus.coins -= upgradeCost; 
       enclosure.cost = upgradeCost; 
-  
       alert(`¡El recinto ${enclosure.name} ha sido mejorado!`);
       this.updateCoins();  
-      this.syncEnclosures(); 
+      this.syncEnclosures();
+      this.updateParkStatus(); 
     } else {
       alert('No tienes suficientes monedas para mejorar este recinto.');
     }
@@ -129,6 +130,7 @@ export class ParkComponent implements OnInit {
       alert(`¡El dinosaurio ${dinosaur.name} ha sido mejorado! Nuevo precio: ${newCost}`);
       this.parkStatus.coins -= newCost; 
       this.updateCoins();
+      this.updateParkStatus(); 
     } else {
       alert('No tienes suficientes monedas para mejorar este dinosaurio.');
     }
@@ -138,23 +140,41 @@ export class ParkComponent implements OnInit {
     const earnedCoins = Math.floor(Math.random() * 100) + 1;
     this.parkStatus.coins += earnedCoins;
     this.updateCoins();
+    this.updateParkStatus(); 
   }
 
   loadParkStatus() {
-    this.parkService.getParkStatus().subscribe(status => {
-      this.parkStatus = status;
-      this.parkStatus.dinosaurs = [];
-      this.parkStatus.enclosures = [];
-      if (!this.parkStatus.coins) {
-        this.parkStatus.coins = 500;
+    this.parkService.getParkStatus().subscribe(
+      (status) => {
+        this.parkStatus = {
+          ...status,
+          dinosaurs: status.dinosaurIds || [],
+          enclosures: status.recintosIds || [],
+          coins: status.coins || 500,
+        };
+  
+        this.syncDinosaurs();
+        this.syncEnclosures();
+        console.log('Estado del parque cargado:', this.parkStatus);
+      },
+      (error) => {
+        console.error('Error al cargar el estado del parque:', error);
+        alert('Hubo un problema al cargar el estado del parque.');
       }
-      this.updateCoins();
-    });
+    );
   }
 
   updateCoins() {
     console.log(`Monedas actuales: ${this.parkStatus.coins}`);
   }
+
+  updateParkStatus() {
+    this.parkService.updateParkStatus(this.parkStatus).subscribe(
+      () => console.log('Estado del parque sincronizado con el backend'),
+      (error) => console.error('Error al sincronizar el estado del parque:', error)
+    );
+  }
+
   showDinosaurInfo(dinosaur: Dinosaur) {
     alert(`ESPECIE: ${dinosaur.scientificName}`);
   }
@@ -164,7 +184,15 @@ export class ParkComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/home']);
+    this.parkService.updateParkStatus(this.parkStatus).subscribe(
+      () => {
+        localStorage.removeItem('token');
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.error('Error al sincronizar el estado antes de cerrar sesión:', error);
+        alert('Hubo un problema al guardar el estado del parque.');
+      }
+    );
   }
 }
