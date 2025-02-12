@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Directorio de Contactos</ion-title>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterContacts()"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment value="{{ activeFilter }}" (ionChange)="onSegmentChange($event)">
+    <ion-segment-button value="Amigos">Amigos</ion-segment-button>
+    <ion-segment-button value="Familia">Familia</ion-segment-button>
+    <ion-segment-button value="Trabajo">Trabajo</ion-segment-button>
+    <ion-segment-button value="">Todos</ion-segment-button>
+  </ion-segment>
+
+  <ion-list>
+    <ion-card *ngFor="let contact of filteredContacts" class="contact-card" [ngClass]="{'with-photo': contact.photo}">
+      <ion-card-header>
+        <ion-avatar slot="start">
+          <img *ngIf="contact.photo; else avatar" [src]="contact.photo" />
+          <ng-template #avatar>
+            <div class="avatar-placeholder">
+              {{ getInitials(contact.name) }}
+            </div>
+          </ng-template>
+        </ion-avatar>
+        <ion-card-title>{{ contact.name }}</ion-card-title>
+        <ion-card-subtitle>{{ contact.email }}</ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-card-content>
+        Teléfono: {{ contact.phone }}
+      </ion-card-content>
+      
+      <ion-item lines="none">
+        <ion-button slot="end" (click)="callContact(contact.phone)">
+          <ion-icon slot="icon-only" name="call"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" (click)="editContact(contact.id)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" (click)="deleteContact(contact.id)" color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-button expand="full" (click)="goToDetails(contact.id)">Ver Detalles</ion-button>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goToAddContact()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
