@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles del Contacto</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="contact">
+  <ion-card>
+    <ion-card-header>
+      <ion-avatar slot="start">
+        <img [src]="contact.photo || 'assets/avatar-placeholder.png'" />
+      </ion-avatar>
+      <ion-card-title>{{ contact.name }}</ion-card-title>
+      <ion-card-subtitle>{{ contact.category }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Email:</strong> {{ contact.email }}</p>
+      <p><strong>Teléfono:</strong> {{ contact.phone }}</p>
+      <p><strong>Notas:</strong> {{ contact.notes || 'Sin notas' }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="primary" (click)="callContact()">Llamar</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" color="secondary" (click)="emailContact()">Enviar Correo</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" color="tertiary" (click)="editContact()">Editar</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="danger" (click)="deleteContact(contact.id)">
+          <ion-icon slot="start" name="trash"></ion-icon>
+          Eliminar Contacto
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
